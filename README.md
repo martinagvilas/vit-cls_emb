@@ -1,12 +1,26 @@
-# Analyzing Vision Tranformers in Class Embedding Space
-This is the code accompanying the work ["Analyzing Vision Transformers for Image
-Classification in Class Embedding Space"]() by Martina G. Vilas, Timothy Schaumlöffel,
-and Gemma Roig, accepted at NeurIPS 2023.
+# Analyzing Vision Tranformers in Class Embedding Space (NeurIPS '23)
+_by Martina G. Vilas, Timothy Schaumlöffel and Gemma Roig._, 
+
+Links: [Paper]() | [Video presentation]() | [Poster]()
+
+> __Abstract__: Despite the growing use of transformer models in computer vision, a mechanistic
+understanding of these networks is still needed. This work introduces a method to
+reverse-engineer Vision Transformers trained to solve image classification tasks.
+Inspired by previous research in NLP, we demonstrate how the inner representations
+at any level of the hierarchy can be projected onto the learned class embedding
+space to uncover how these networks build categorical representations for their pre-
+dictions. We use our framework to show how image tokens develop class-specific
+representations that depend on attention mechanisms and contextual information,
+and give insights on how self-attention and MLP layers differentially contribute to
+this categorical composition. We additionally demonstrate that this method (1) can
+be used to determine the parts of an image that would be important for detecting
+the class of interest, and (2) exhibits significant advantages over traditional linear
+probing approaches. Taken together, our results position our proposed framework
+as a powerful tool for mechanistic interpretability and explainability.
 
 ![framework](framework.png)
 
- \
- \
+ 
 ## :wrench: Running the experiments
 
 ### Step 1: Get a local working copy of this code
@@ -63,7 +77,7 @@ python linear_probing/prober.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} 
 ### Step 4: Reproduce the results
 After running the above code, 
 head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/notebooks) section to reproduce and visualize the reported results.
- \
- \
+ 
+ 
 ## :paperclip: Citation
 Please cite this work as:
