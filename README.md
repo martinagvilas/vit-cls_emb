@@ -1,7 +1,7 @@
 # Analyzing Vision Tranformers in Class Embedding Space
-This is the code accompanying the work "Analyzing Vision Transformers for Image
-Classification in Class Embedding Space" by Martina Vilas, Timothy Schaumlöffel,
-and Gemma Roig. Accepted at NeurIPS 2023.
+This is the code accompanying the work ["Analyzing Vision Transformers for Image
+Classification in Class Embedding Space"]() by Martina G. Vilas, Timothy Schaumlöffel,
+and Gemma Roig, accepted at NeurIPS 2023.
 
 
 ## :wrench: Running the experiments
@@ -52,14 +52,14 @@ python memories.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} -m {MODEL} -l
 ```
 - Layer type can be one of `attn` or `mlp`.
 
-__3.5.__ Run comparison with linear probing studies, by:
+__3.5.__ Run comparison with a linear probing approach, by:
 ```
 python linear_probing/prober.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} -l {LAYER INDEX}
 ```
 
 ### Step 4: Reproduce the results
 After running the above code, 
-head to the notebooks section to reproduce and visualize the reported results.
+head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/notebooks) section to reproduce and visualize the reported results.
 
 ## :paperclip: Citation
 Please cite this work as:
