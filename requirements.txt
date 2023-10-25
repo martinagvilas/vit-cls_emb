@@ -1,0 +1,15 @@
+matplotlib
+numpy
+opencv-python
+jupyterlab
+pandas == 1.5.2
+seaborn
+scipy
+
+einops
+scikit-learn
+#timm == 0.9.2
+timm == 0.6.12
+tqdm == 4.64.1
+torch == 1.13.1
+transformers == 4.26.0
