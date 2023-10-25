@@ -3,7 +3,10 @@ This is the code accompanying the work ["Analyzing Vision Transformers for Image
 Classification in Class Embedding Space"]() by Martina G. Vilas, Timothy Schaumlöffel,
 and Gemma Roig, accepted at NeurIPS 2023.
 
+![framework](framework.png)
 
+ \
+ \
 ## :wrench: Running the experiments
 
 ### Step 1: Get a local working copy of this code
@@ -60,6 +63,7 @@ python linear_probing/prober.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} 
 ### Step 4: Reproduce the results
 After running the above code, 
 head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/notebooks) section to reproduce and visualize the reported results.
-
+ \
+ \
 ## :paperclip: Citation
 Please cite this work as:
