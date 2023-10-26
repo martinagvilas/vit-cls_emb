@@ -1,5 +1,5 @@
 # Analyzing Vision Tranformers in Class Embedding Space (NeurIPS '23)
-_by Martina G. Vilas, Timothy Schaumlöffel and Gemma Roig._, 
+_by Martina G. Vilas, Timothy Schaumlöffel and Gemma Roig_
 
 Links: [Paper]() | [Video presentation]() | [Poster]()
 
@@ -16,7 +16,7 @@ this categorical composition. We additionally demonstrate that this method (1) c
 be used to determine the parts of an image that would be important for detecting
 the class of interest, and (2) exhibits significant advantages over traditional linear
 probing approaches. Taken together, our results position our proposed framework
-as a powerful tool for mechanistic interpretability and explainability.
+as a powerful tool for mechanistic interpretability and explainability research.
 
 ![framework](framework.png)
 
@@ -78,6 +78,9 @@ python linear_probing/prober.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} 
 After running the above code, 
 head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/notebooks) section to reproduce and visualize the reported results.
  
- 
+ <!-- Acknoledgements -->
+<!-- README inspired by https://github.com/Muzammal-Naseer/IPViT -->
+<!-- also timm libraries -->
+
 ## :paperclip: Citation
 Please cite this work as:
