@@ -281,8 +281,24 @@ def compute_class_similarity_change(model_name, block, layer_type, dataset_path,
 
 
 def compute_residual_match(model_name, dataset_path, res_path, token_type='all'):
-    """
-    Compute match with the predictions of the residual.
+    """Compute match with the predictions of the residual.
+
+    Parameters
+    ----------
+    model_name : str
+        Model name. Can be one of the following options: vit_b_16, vit_b_32, 
+        vit_large_16, vit_miil_16, vit_cifar_16, deit_ensemble_16, vit_gap_16.
+    dataset_path : pathlib.Path
+        Path to dataset.
+    res_path : pathlib.Path
+        Path to results.
+    token_type : str, optional
+        Compute match with all tokens, or with cls only, by default 'all'.
+
+    Returns
+    -------
+    pd.DataFrame
+        Match with residual
     """
 
     if 'large' in model_name:
