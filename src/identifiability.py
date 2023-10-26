@@ -247,3 +247,91 @@ def compute_context_diff(df):
     pval = np.sum(true_diff < random_diffs) / n_perm
     
     return true_diff, pval
+
+
+def compute_class_similarity_change(model_name, block, layer_type, dataset_path, res_path):
+    """Compute class similarity change rate of layer.
+
+    Parameters
+    ----------
+    model_name : str
+        Model name. Can be one of the following options: vit_b_16, vit_b_32, 
+        vit_large_16, vit_miil_16, vit_cifar_16, deit_ensemble_16, vit_gap_16.
+    block : int
+        Index of block.
+    layer_type : str
+        Layer type. Can be one of 'attn' or 'mlp'.
+    dataset_path : pathlib.Path
+        Path to dataset.
+    res_path : pathlib.Path
+        Path to results.
+
+    Returns
+    -------
+    torch.Tensor
+        Class similarity change rate.
+    """
+    dec_layer = get_class_embed(
+        res_path, dataset_path, model_name, f'hs-{layer_type}_{block}', 'probs'
+    )
+    dec = get_class_embed(
+        res_path, dataset_path, model_name, f'hs_{block-1}', 'probs'
+    )
+    return (dec_layer - dec)
+
+
+def compute_residual_match(model_name, dataset_path, res_path, token_type='all'):
+    """
+    Compute match with the predictions of the residual.
+    """
+
+    if 'large' in model_name:
+        n_layers = 24
+    else:
+        n_layers = 12
+
+    if 'gap' in model_name:
+        idxs = torch.arange(196)
+    elif token_type == 'cls':
+        idxs = 0
+    elif (token_type == 'all') & ('32' in model_name):
+        idxs = torch.arange(50)
+    elif (token_type == 'all') & ('16' in model_name):
+        idxs = torch.arange(197)
+            
+    data = []
+    for block in range(1, n_layers):
+        # Get residual stream prediction
+        topk_b = get_class_embed(
+            res_path, dataset_path, model_name, f'hs_{block}', decoding_type='topk'
+        )[:, idxs, 0]
+
+        # Get attention layer prediction and compute match
+        topk_attn = get_class_embed(
+           res_path, dataset_path, model_name, f'hs-attn_{block}', decoding_type='topk'
+        )[:, idxs, 0]
+        attn_match = torch.sum(topk_b == topk_attn) / topk_b.flatten().shape[0] * 100
+        data.append(['attn', block+1, attn_match.detach().numpy()])
+        
+        # Get MLP layer prediction and compute match
+        topk_mlp = get_class_embed(
+            res_path, dataset_path, model_name, f'hs-mlp_{block}', decoding_type='topk'
+        )[:, idxs, 0]
+        mlp_match = torch.sum(topk_b == topk_mlp) / topk_b.flatten().shape[0] * 100
+        data.append(['mlp', block+1, mlp_match.detach().numpy()])
+
+        # Get previous block residual stream prediction and compute match
+        topk_prev = get_class_embed(
+            res_path, dataset_path, model_name, f'hs_{block-1}', decoding_type='topk'
+        )[:, idxs, 0]
+        prev_match = torch.sum(topk_b == topk_prev) / topk_b.flatten().shape[0] * 100
+        data.append(['prev', block+1, prev_match.detach().numpy()])
+        
+        # Compute rate of tokens that do not match any prediction of the above
+        comp_tokens = (topk_b != topk_prev) & (topk_b != topk_attn) & (topk_b != topk_attn)
+        comp = torch.sum(comp_tokens) / topk_b.flatten().shape[0] * 100
+        data.append(['comp', block+1, comp.detach().numpy()])
+
+    data = pd.DataFrame(data, columns=['Source', 'block', 'match'])
+    data['match'] = data['match'].astype('float')
+    return data
