@@ -250,6 +250,54 @@ class Memory:
         return
 
 
+def compute_key_value_agr_rate(model_name, layer_type, res_path, tokens='all'):
+    """Compute key-value agreement rate.
+
+    Parameters
+    ----------
+    model_name : str
+        Model name. Can be one of the following options: vit_b_16, vit_b_32, 
+        vit_large_16, vit_miil_16, vit_cifar_16, deit_ensemble_16, vit_gap_16.
+    layer_type : str
+        Type of layer. Can be one of 'attn' or 'mlp'.
+    res_path : pathlib.Path
+        Path to results.
+    tokens : str, optional
+        Use all tokens or cls only, by default 'all'.
+
+    Returns
+    -------
+    pd.DataFrame
+        Key-value agreement rate.
+    """
+    if 'large' in model_name:
+        n_layers = 24
+    else:
+        n_layers = 12
+    
+    # Get key-value agreement scores
+    agreement_rate = []
+    for b in range(n_layers):
+        f = res_path / 'memories/' / model_name / f'{layer_type}_{b}_value-class_agreement.pt'
+        agr = torch.load(f, map_location='cpu')
+        if tokens == 'all':
+            agr = agr.flatten(start_dim=1)
+        elif tokens == 'cls':
+            agr = agr[:,:, 0]
+        # Compute agreement rate
+        tokens_agr = torch.sum(agr, dim=1) / agr.shape[1] * 100
+        agreement_rate.append(tokens_agr)
+
+    # Save results in dataframe
+    agreement_rate = torch.stack(agreement_rate).flatten().detach().numpy()
+    agreement_rate = pd.DataFrame(
+        {'block': torch.arange(1,n_layers+1).repeat_interleave(agr.shape[0]), 'agreement rate': agreement_rate}
+    )
+    agreement_rate['agreement rate'] = agreement_rate['agreement rate'].astype('float')
+    
+    return agreement_rate
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
