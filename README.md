@@ -1,7 +1,7 @@
 # Analyzing Vision Tranformers in Class Embedding Space (NeurIPS '23)
 _by [Martina G. Vilas](https://martinagvilas.github.io/), Timothy Schaumlöffel and [Gemma Roig](http://www.cvai.cs.uni-frankfurt.de/team.html)_
 
-Links: [Paper](https://arxiv.org/abs/2310.18969) | [Video presentation]() _(coming soon)_ | [Poster]() _(coming soon)_
+__*Links*__: [Paper](https://arxiv.org/abs/2310.18969) | [Video presentation]() _(coming soon)_ | [Poster]() _(coming soon)_
 
 > __Abstract__: Despite the growing use of transformer models in computer vision, a mechanistic
 understanding of these networks is still needed. This work introduces a method to
@@ -19,11 +19,22 @@ probing approaches. Taken together, our results position our proposed framework
 as a powerful tool for mechanistic interpretability and explainability research.
 
 ![framework](framework.png)
+*Schematic of our framework*
 
- 
-## :wrench: Running the experiments
+## :paperclip: Contents
 
-### Step 1: Get a local working copy of this code
+- [Tutorial](#tutorial)
+- [Running the experiments](#running-the-experiments)
+- [Citing our work](#citing-our-work)
+- [Acknowledgments](#acknoledgements)
+
+## Tutorial
+
+_Coming soon!_
+
+## Running the experiments
+
+#### Step 1: Get a local working copy of this code
 __1.1.__ Clone this repository in your local machine.
 
 __1.2.__ Install the required software using conda, by running:
@@ -34,7 +45,7 @@ pip install -r requirements.txt
 pip install .
 ```
 
-### Step 2: Download the dataset and modell checkpoints
+#### Step 2: Download the dataset and model checkpoints
 __2.1.__ Download the ImageNet-S dataset from [here](https://github.com/LUSSeg/ImageNet-S).
 
 __2.2.__ Download the stimuli info file from [here](https://drive.google.com/drive/folders/1bkJeOGMxU2Ta0CrtKeY9JBLArwmQM9mu?usp=sharing), and place it inside the `ImageNet-S/ImageNetS919`
@@ -42,7 +53,7 @@ folder downloaded in the previous step.
 
 __2.3.__ Download the model checkpoint folder from [here](https://drive.google.com/drive/folders/1bkJeOGMxU2Ta0CrtKeY9JBLArwmQM9mu?usp=sharing), and place it inside the project folder.
 
-### Step 3: Run experiments for extracting code
+#### Step 3: Run experiments for extracting code
 __3.1.__ Project hidden states to class embedding space and save key coefficients, by running:
 ```
 python extractor.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} -m {MODEL} -pretrained
@@ -74,15 +85,11 @@ __3.5.__ Run comparison with a linear probing approach, by:
 python linear_probing/prober.py -pp {PATH TO SOURCE CODE} -dp {PATH TO DATASET} -l {LAYER INDEX}
 ```
 
-### Step 4: Reproduce the results
+#### Step 4: Reproduce the results
 After running the above code, 
 head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/notebooks) section to reproduce and visualize the reported results.
  
- <!-- Acknoledgements -->
-<!-- README inspired by https://github.com/Muzammal-Naseer/IPViT -->
-<!-- also timm libraries -->
-
-## :paperclip: Citation
+## Citing our work
 Please cite this work as:
 ```
 @misc{vilas2023analyzing,
@@ -94,3 +101,8 @@ Please cite this work as:
       primaryClass={cs.CV}
 }
 ```
+
+
+## Acknoledgements
+- The pre-trained models are extracted from the [timm](https://github.com/huggingface/pytorch-image-models/tree/main) library.
+- Our readme is inspired by [IPViT](https://github.com/Muzammal-Naseer/IPViT).
