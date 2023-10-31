@@ -19,7 +19,10 @@ probing approaches. Taken together, our results position our proposed framework
 as a powerful tool for mechanistic interpretability and explainability research.
 
 ![framework](framework.png)
-<center><i>Schematic of our framework</i></center> 
+<!-- <center><i>Schematic of our framework</i></center>  -->
+<div align="center">
+<i>Schematic of our framework</i>
+</div>
 
 ## :paperclip: Contents
 
