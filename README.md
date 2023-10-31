@@ -1,7 +1,7 @@
 # Analyzing Vision Tranformers in Class Embedding Space (NeurIPS '23)
-_by Martina G. Vilas, Timothy Schaumlöffel and Gemma Roig_
+_by [Martina G. Vilas](https://martinagvilas.github.io/), Timothy Schaumlöffel and [Gemma Roig](http://www.cvai.cs.uni-frankfurt.de/team.html)_
 
-Links: [Paper]() | [Video presentation]() | [Poster]()
+Links: [Paper](https://arxiv.org/abs/2310.18969) | [Video presentation]() _(coming soon)_ | [Poster]() _(coming soon)_
 
 > __Abstract__: Despite the growing use of transformer models in computer vision, a mechanistic
 understanding of these networks is still needed. This work introduces a method to
@@ -84,3 +84,13 @@ head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/n
 
 ## :paperclip: Citation
 Please cite this work as:
+```
+@misc{vilas2023analyzing,
+      title={Analyzing Vision Transformers for Image Classification in Class Embedding Space}, 
+      author={Martina G. Vilas and Timothy Schaumlöffel and Gemma Roig},
+      year={2023},
+      eprint={2310.18969},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+```
