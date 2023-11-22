@@ -35,7 +35,7 @@ as a powerful tool for mechanistic interpretability and explainability research.
 
 You can access a tutorial of our method here: <a target="_blank" href="https://colab.research.google.com/github/martinagvilas/vit-cls_emb/blob/main/notebooks/tutorial.ipynb">
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
-</a>.
+</a>
 
 ## Running the experiments
 
