@@ -29,7 +29,7 @@ as a powerful tool for mechanistic interpretability and explainability research.
 - [Tutorial](#tutorial)
 - [Running the experiments](#running-the-experiments)
 - [Citing our work](#citing-our-work)
-- [Acknowledgments](#acknoledgements)
+- [Acknowledgements](#acknowledgements)
 
 ## Tutorial
 
@@ -106,6 +106,6 @@ Please cite this work as:
 ```
 
 
-## Acknoledgements
+## Acknowledgements
 - The pre-trained models are extracted from the [timm](https://github.com/huggingface/pytorch-image-models/tree/main) library.
 - Our readme is inspired by [IPViT](https://github.com/Muzammal-Naseer/IPViT).
