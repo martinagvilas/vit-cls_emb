@@ -97,14 +97,16 @@ head to the [notebooks](https://github.com/martinagvilas/vit-cls_emb/tree/main/n
 ## Citing our work
 Please cite this work as:
 ```
-@misc{vilas2023analyzing,
-      title={Analyzing Vision Transformers for Image Classification in Class Embedding Space}, 
-      author={Martina G. Vilas and Timothy Schaumlöffel and Gemma Roig},
-      year={2023},
-      eprint={2310.18969},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@inproceedings{vilas2023analyzing_vit,
+ title = {Analyzing Vision Transformers for Image Classification in Class Embedding Space},
+ author = {Vilas, Martina G. and Schauml\"{o}ffel, Timothy and Roig, Gemma},
+ booktitle = {Advances in Neural Information Processing Systems},
+ pages = {40030--40041},
+ volume = {36},
+ year = {2023}
+ url = {https://proceedings.neurips.cc/paper_files/paper/2023/file/7dd309df03d37643b96f5048b44da798-Paper-Conference.pdf},
 }
+
 ```
 
 
