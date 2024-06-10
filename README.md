@@ -1,4 +1,4 @@
-# Analyzing Vision Tranformers in Class Embedding Space (NeurIPS '23)
+# Analyzing Vision Transformers in Class Embedding Space (NeurIPS '23)
 _by [Martina G. Vilas](https://martinagvilas.github.io/), Timothy Schaumlöffel and [Gemma Roig](http://www.cvai.cs.uni-frankfurt.de/team.html)_
 
 __*Links*__: [Paper](https://arxiv.org/abs/2310.18969) | [Video presentation]() _(coming soon)_ | [Poster]() _(coming soon)_
